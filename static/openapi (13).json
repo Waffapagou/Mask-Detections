@@ -1,0 +1,50 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Mask API",
+    "description": "An API which return a prediction of person if this person wear or not a mask"
+  },
+  "paths": {
+    "/uploadfile": {
+      "post": {
+        "tags": [
+          "Mask"
+        ],
+        "description": "Returns prediction 0 or 1",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "file",
+            "required": true,
+            "description": "language",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "properties": {
+                    "media": {
+                      "type": "string",
+                      "format": "base64"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
